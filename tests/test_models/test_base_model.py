@@ -9,12 +9,12 @@ import datetime
 
 
 class BaseModelTests(unittest.TestCase):
-    ''' '''
+    '''Suites of Console Tests '''
 
     my_model = BaseModel()
 
     def test_base_model(self):
-        ''' '''
+        '''Test attributes value of a BaseModel instance '''
 
         self.my_model.name = 'My First Model'
         self.my_model.my_number = 89
