@@ -26,4 +26,24 @@ class BaseModelTests(unittest.TestCase):
         self.assertEqual('BaseModel', my_model_json['__class__'])
         self.assertEqual(self.my_model.id, my_model_json['id'])
 
+    def test_save(self):
+        ''' '''
+        self.my_model.fname = 'My_First_Model'
+        self.my_model.save()
 
+        self.assertIsInstance(self.my_model.id, str)
+        self.assertIsInstance(self.my_model.created_at, datetime.datetime)
+        self.assertIsInstance(self.my_model.updated_at, datetime.datetime)
+
+        f_dict = self.my_model.to_dict()
+
+        self.my_model.fname = 'My_Second_Model'
+        self.my_model.save()
+
+        s_dict = self.my_model.to_dict()
+
+        self.assertEqual(f_dict['created_at'], s_dict['created_at'])
+        self.assertNotEqual(f_dict['updated_at'], s_dict['updated_at'])
+
+if __name__ == '__main__':
+    unittest.main()
