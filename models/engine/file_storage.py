@@ -27,7 +27,7 @@ class FileStorage:
             dic[key] = val.to_dict()
 
         with open(FileStorage.__file_path, 'w') as f:
-            json.dumps(dic, f)
+            json.dump(dic, f)
 
     def reload(self):
         ''' '''
@@ -37,5 +37,5 @@ class FileStorage:
 
         if os.path.exists(FileStorage.__file_path) is True:
             with open(FileStorage.__file_path, 'r') as f:
-                for key, val in json.load(f).items():
-                    self.new(dic[val['__class__']](**val))
+                for key, value in json.load(f).items():
+                    self.new(dic[value['__class__']](**value))

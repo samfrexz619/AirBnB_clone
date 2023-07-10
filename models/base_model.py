@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 '''parent class that will inherit'''
 
 import uuid
@@ -25,9 +25,9 @@ class BaseModel:
 
     def __str__(self):
         ''' '''
-        cls_name = '[" + self.__class__.__name__ + "]'
+        class_name = '[" + self.__class__.__name__ + "]'
         dic = {k: v for (k, v) in self.__dict__.items() if (not v) is False}
-        return cls_name + ' (" + self.id + ") ' + str(dic)
+        return class_name + ' (" + self.id + ") ' + str(dic)
 
     def save(self):
         ''' '''
@@ -40,12 +40,12 @@ class BaseModel:
 
         for key, vals in self.__dict__.items():
             if key == 'created_at' or key == 'updated_at':
-                n_dicts[key] = vals.strftime('%Y-%m-%dT%H:%M:%S.%f')
+                n_dict[key] = vals.strftime('%Y-%m-%dT%H:%M:%S.%f')
             else:
                 if not vals:
                     pass
                 else:
-                    n_dicts[key] = vals
+                    n_dict[key] = vals
         n_dict['__class__'] = self.__class__.__name__
 
         return n_dict
