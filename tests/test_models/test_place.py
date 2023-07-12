@@ -1,24 +1,26 @@
 #!/usr/bin/python3
-''' '''
+''' Unittest for amenity.py '''
+
 import unittest
 from models.place import Place
 import datetime
 
 
 class TestPlace(unittest.TestCase):
-    ''' '''
+    ''' Tests instances and methods from amenity class '''
+
     plc = Place()
 
     def test_class_exists(self):
-        ''' '''
+        ''' tests if class exists '''
         self.assertEqual(str(type(self.plc)), "<class 'models.place.Place'>")
 
     def test_user_inheritance(self):
-        ''' '''
+        ''' test if Place is a subclass of BaseModel '''
         self.assertIsInstance(self.plc, Place)
 
     def testHasAttributes(self):
-        ''' '''
+        ''' verify if attributes exist '''
         self.assertTrue(hasattr(self.plc, 'city_id'))
         self.assertTrue(hasattr(self.plc, 'user_id'))
         self.assertTrue(hasattr(self.plc, 'name'))
@@ -35,7 +37,7 @@ class TestPlace(unittest.TestCase):
         self.assertTrue(hasattr(self.plc, 'updated_at'))
 
     def test_types(self):
-        ''' '''
+        ''' tests if the type of the attribute is the correct one '''
         self.assertIsInstance(self.plc.city_id, str)
         self.assertIsInstance(self.plc.user_id, str)
         self.assertIsInstance(self.plc.name, str)
