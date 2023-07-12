@@ -72,4 +72,4 @@ class FileStorage:
                 var = json.load(fd)
                 for elem in var:
                     aux = dict_cls[var[elem]['__class__']]
-                    self.__objects[elem] = aux(**(var[elem]))
+			self.__objects[elem] = aux(**(var[elem]))
