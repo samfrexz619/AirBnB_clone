@@ -31,7 +31,7 @@ class BaseModelTest(unittest.TestCase):
         del cls.my_model2
         try:
             os.remove("file.json")
-        except:
+        except Exception:
             pass
 
     def test_checking_for_docstring_BaseModel(self):
@@ -91,6 +91,7 @@ class BaseModelTest(unittest.TestCase):
         self.assertEqual(my_new_model.created_at, self.my_model.created_at)
         self.assertEqual(my_new_model.updated_at, self.my_model.updated_at)
         self.assertNotEqual(my_new_model, self.my_model)
+
 
 if __name__ == '__main__':
     unittest.main()

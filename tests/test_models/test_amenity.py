@@ -5,6 +5,7 @@ import unittest
 from models.amenity import Amenity
 import datetime
 
+
 class TestAmenity(unittest.TestCase):
     ''' Tests instances and methods from amenity class '''
     aty = Amenity()
@@ -25,6 +26,7 @@ class TestAmenity(unittest.TestCase):
     def test_types(self):
         ''' tests if the type of the attribute is the correct one '''
         self.assertIsInstance(self.aty.name, str)
+
 
 if __name__ == '__main__':
     unittest.main()

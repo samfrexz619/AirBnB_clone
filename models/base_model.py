@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Parent class 
+Parent class
 """
 
 import uuid

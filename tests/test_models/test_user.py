@@ -37,5 +37,6 @@ class UserCase(unittest.TestCase):
         self.assertIsInstance(self.my_user.created_at, datetime.datetime)
         self.assertIsInstance(self.my_user.updated_at, datetime.datetime)
 
+
 if __name__ == '__main__':
     unittest.main()

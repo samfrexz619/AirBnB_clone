@@ -12,8 +12,8 @@ from models.amenity import Amenity
 from models.review import Review
 
 dict_cls = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
-           'State': State, 'City': City, 'Amenity': Amenity,
-           'Review': Review}
+            'State': State, 'City': City, 'Amenity': Amenity,
+            'Review': Review}
 
 
 class FileStorage:
@@ -72,4 +72,4 @@ class FileStorage:
                 var = json.load(fd)
                 for elem in var:
                     aux = dict_cls[var[elem]['__class__']]
-			self.__objects[elem] = aux(**(var[elem]))
+                    self.__objects[elem] = aux(**(var[elem]))
