@@ -30,7 +30,7 @@ class FileStorageTest(unittest.TestCase):
         del cls.my_model
         try:
             os.remove("file.json")
-        except:
+        except Exception:
             pass
 
     def test_checking_docstring_FileStorage(self):
@@ -95,6 +95,7 @@ class FileStorageTest(unittest.TestCase):
         storage.reload()
         l2 = len(storage.all())
         self.assertEqual(l1, l2 - 1)
+
 
 if __name__ == '__main__':
     unittest.main()
