@@ -120,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
                 print('** instance id is missing **')
             else:
                 objs = models.storage.all()
-                key = str(ln[0]) + "." + str(lv[1])
+                key = str(ln[0]) + "." + str(ln[1])
                 if key not in objs:
                     print('** no instance found **')
                 else:
@@ -191,14 +191,14 @@ class HBNBCommand(cmd.Cmd):
                             if len(sub2) < 2:
                                 sub2.append('')
                             new.append(tuple(sub2))
-                        dicti = dict(new)
-                        print(dicti)
-                        for key in dicti:
+                        dic = dict(new)
+                        print(dic)
+                        for key in dic:
                             new_cmd = cmmd + ' '
                             new_cmd += str(key)
                             new_cmd = new_cmd.replace('\"', '')
                             new_cmd = new_cmd.replace('\'', '')
-                            new_cmd += ' \"' + str(dicti[key]) + '\"'
+                            new_cmd += ' \"' + str(dic[key]) + '\"'
                             self.do_update(new_cmd)
                     else:
                         for idx in range(1, len(third)):
