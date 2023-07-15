@@ -71,5 +71,5 @@ class FileStorage:
             with open(self.__file_path, 'r') as fd:
                 var = json.load(fd)
                 for elem in var:
-                    aux = dict_cls[var[elem]['__class__']]
-                    self.__objects[elem] = aux(**(var[elem]))
+                    x = dict_cls[var[elem]['__class__']]
+                    self.__objects[elem] = x(**(var[elem]))

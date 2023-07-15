@@ -22,12 +22,12 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     def do_EOF(self, args):
-        '''EOF command to exit the command interpreter '''
+        '''EOF command to exit the program '''
         print('')
         return True
 
     def do_quit(self, args):
-        '''Quit command to exit the command interpreter '''
+        '''Quit command to exit the program '''
         return True
 
     def do_empty_line(self):
