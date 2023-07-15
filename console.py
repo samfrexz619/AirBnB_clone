@@ -20,7 +20,7 @@ dict_cls = {'BaseModel': BaseModel, 'User': User, 'State': State, 'City': City,
 class HBNBCommand(cmd.Cmd):
     '''Command processor '''
     prompt = '(hbnb) '
-    
+
     def do_EOF(self, args):
         '''EOF command to exit the command interpreter '''
         print('')
@@ -129,7 +129,7 @@ class HBNBCommand(cmd.Cmd):
                     else:
                         setattr(objs[key], ln[2], ln[3])
                         models.storage.save()
-    
+
     def do_count(self, args):
         '''counts number of instances of a class '''
         num = 0
