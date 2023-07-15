@@ -76,25 +76,25 @@ class FileStorageTest(unittest.TestCase):
 
     def test_save_FileStorage(self):
         '''Test if 'new' method is working'''
-        var1 = self.my_model.to_dict()
-        new_key = var1['__class__'] + "." + var1['id']
+        v1 = self.my_model.to_dict()
+        new_key = v1['__class__'] + "." + v1['id']
         storage = FileStorage()
         storage.save()
         with open("file.json", 'r') as fd:
-            var2 = json.load(fd)
-        new = var2[new_key]
+            v2 = json.load(fd)
+        new = v2[new_key]
         for key in new:
-            self.assertEqual(var1[key], new[key])
+            self.assertEqual(v1[key], new[key])
 
     def test_new(self):
         '''testing change len'''
         storage = FileStorage()
-        l1 = len(storage.all())
+        len1 = len(storage.all())
         new = BaseModel()
         storage.save()
         storage.reload()
-        l2 = len(storage.all())
-        self.assertEqual(l1, l2 - 1)
+        len2 = len(storage.all())
+        self.assertEqual(len1, len2 - 1)
 
 
 if __name__ == '__main__':
