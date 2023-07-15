@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' '''
+'''Entry point of the command interpreter '''
 import cmd
 import sys
 import shlex
@@ -18,24 +18,24 @@ dict_cls = {'BaseModel': BaseModel, 'User': User, 'State': State, 'City': City,
 
 
 class HBNBCommand(cmd.Cmd):
-    ''' '''
+    '''Command processor '''
     prompt = '(hbnb) '
     
     def do_EOF(self, args):
-        ''' '''
+        '''EOF command to exit the command interpreter '''
         print('')
         return True
 
     def do_quit(self, args):
-        ''' '''
+        '''Quit command to exit the command interpreter '''
         return True
 
     def do_empty_line(self):
-        ''' '''
+        '''do nothing when empty line '''
         pass
 
     def do_create(self, args):
-        ''' '''
+        '''Creates an instance according to a given class '''
         if args is None or len(args) == 0:
             print('** class name missing **')
         else:
@@ -47,7 +47,7 @@ class HBNBCommand(cmd.Cmd):
                 print('** class doesn\'t exist **')
 
     def do_show(self, args):
-        ''' '''
+        '''Shows string representation of an instance passed '''
         if args is None or len(args) == 0:
             print('** class name missing **')
         else:
@@ -66,7 +66,7 @@ class HBNBCommand(cmd.Cmd):
                 print('** class doesn\'t exist **')
 
     def do_destroy(self, args):
-        ''' '''
+        '''Deletes an instance passed '''
         if args is None or len(args) == 0:
             print('** class name missing **')
         else:
@@ -86,7 +86,7 @@ class HBNBCommand(cmd.Cmd):
                 print('** class doesn\'t exist **')
 
     def do_all(self, args):
-        ''' '''
+        '''Prints string represention of all instances of a given class '''
         objs = models.storage.all()
         obj_list = []
         if args == '':
@@ -106,7 +106,7 @@ class HBNBCommand(cmd.Cmd):
                 print('** class doesn\'t exist **')
 
     def do_update(self, args):
-        ''' '''
+        '''Updates an instance based on the class name and id '''
         ln = shlex.split(args)
         if len(ln) == 0:
             print('** class name missing **')
@@ -131,7 +131,7 @@ class HBNBCommand(cmd.Cmd):
                         models.storage.save()
     
     def do_count(self, args):
-        ''' '''
+        '''counts number of instances of a class '''
         num = 0
         objs = models.storage.all()
         new = {}
@@ -143,7 +143,7 @@ class HBNBCommand(cmd.Cmd):
         print(num)
 
     def default(self, args):
-        ''' '''
+        '''set default on instance based on class and id '''
         first = args.split('.')
         if len(first) > 1:
             cls_name = first[0]
