@@ -30,7 +30,7 @@ class HBNBCommand(cmd.Cmd):
         '''Quit command to exit the program '''
         return True
 
-    def do_empty_line(self):
+    def emptyline(self):
         '''do nothing when empty line '''
         pass
 
