@@ -7,7 +7,8 @@ import unittest
 import os
 from models.base_model import BaseModel
 from datetime import datetime
-
+from models import storage
+from models.engine.file_storage import FileStorage
 
 class BaseModelTest(unittest.TestCase):
     '''
@@ -33,6 +34,19 @@ class BaseModelTest(unittest.TestCase):
             os.remove("file.json")
         except Exception:
             pass
+
+    def testBaseModel(self):
+        '''Test attributes val of  BaseModel instance'''
+
+        self.my_model.name = "My_First"
+        self.my_model.my_number = 89
+        self.my_model.save()
+        my_model_json = self.my_model.to_dict()
+
+        self.assertEqual(self.my_model.name, my_model_json['name'])
+        self.assertEqual(self.my_model.my_number, my_model_json['my_number'])
+        self.assertEqual('BaseModel', my_model_json['__class__'])
+        self.assertEqual(self.my_model.id, my_model_json['id'])
 
     def test_checking_for_docstring_BaseModel(self):
         '''Test for docstring'''
@@ -63,7 +77,6 @@ class BaseModelTest(unittest.TestCase):
 
     def test_save_BaseModel(self):
         '''Test save method'''
-        self.my_model.name = "Sammy"
         self.my_model.save()
         self.assertNotEqual(self.my_model.created_at, self.my_model.updated_at)
 
@@ -82,14 +95,14 @@ class BaseModelTest(unittest.TestCase):
     def test_from_dict_to_BaseModel(self):
         '''Test to create an instance from a dict'''
         my_model_json = self.my_model.to_dict()
-        my_new_model = BaseModel(**my_model_json)
-        self.assertTrue(isinstance(my_new_model, BaseModel))
-        self.assertEqual(my_new_model.name, "My First")
-        self.assertEqual(my_new_model.my_number, 89)
-        self.assertEqual(my_new_model.id, self.my_model.id)
-        self.assertEqual(my_new_model.created_at, self.my_model.created_at)
-        self.assertEqual(my_new_model.updated_at, self.my_model.updated_at)
-        self.assertNotEqual(my_new_model, self.my_model)
+        new_model = BaseModel(**my_model_json)
+        self.assertTrue(isinstance(new_model, BaseModel))
+        self.assertEqual(new_model.name, "My First")
+        self.assertEqual(new_model.my_number, 89)
+        self.assertEqual(new_model.id, self.my_model.id)
+        self.assertEqual(new_model.created_at, self.my_model.created_at)
+        self.assertEqual(new_model.updated_at, self.my_model.updated_at)
+        self.assertNotEqual(new_model, self.my_model)
 
 
 if __name__ == '__main__':
