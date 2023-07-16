@@ -56,29 +56,28 @@ class BaseModelTest(unittest.TestCase):
         self.assertNotEqual(self.my_model.id, self.my_model2.id)
 
     def test_str(self):
-        """Test if __str__ method show the right output"""
+        '''Test if __str__ shows the right output'''
         string = "[BaseModel] ({}) {}".format(self.my_model.id,
                                               self.my_model.__dict__)
         self.assertEqual(string, str(self.my_model))
 
     def test_save_BaseModel(self):
-        """Test if updated at changes"""
+        '''Test save method'''
+        self.my_model.name = "Sammy"
         self.my_model.save()
         self.assertNotEqual(self.my_model.created_at, self.my_model.updated_at)
 
     def test_to_dict_BaseModel(self):
-        """If the convertion to dictionary works:
-        __class__: has to be created
-        created_at and updated at have to change the format"""
-        t_format = "%Y-%m-%dT%H:%M:%S.%f"
+        '''test convertion to dict'''
+        fmt = "%Y-%m-%dT%H:%M:%S.%f"
         model_dict = self.my_model.to_dict()
         self.assertEqual(self.my_model.__class__.__name__, 'BaseModel')
         self.assertEqual(type(model_dict['created_at']), str)
         self.assertEqual(type(model_dict['updated_at']), str)
         self.assertEqual(model_dict["created_at"],
-                         self.my_model.created_at.strftime(t_format))
+                         self.my_model.created_at.strftime(fmt))
         self.assertEqual(model_dict["updated_at"],
-                         self.my_model.updated_at.strftime(t_format))
+                         self.my_model.updated_at.strftime(fmt))
 
     def test_from_dict_to_BaseModel(self):
         '''Test to create an instance from a dict'''
