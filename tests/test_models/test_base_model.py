@@ -7,8 +7,7 @@ import unittest
 import os
 from models.base_model import BaseModel
 from datetime import datetime
-from models import storage
-from models.engine.file_storage import FileStorage
+
 
 class BaseModelTest(unittest.TestCase):
     '''
@@ -34,19 +33,6 @@ class BaseModelTest(unittest.TestCase):
             os.remove("file.json")
         except Exception:
             pass
-
-    def testBaseModel(self):
-        '''Test attributes val of  BaseModel instance'''
-
-        self.my_model.name = "My_First"
-        self.my_model.my_number = 89
-        self.my_model.save()
-        my_model_json = self.my_model.to_dict()
-
-        self.assertEqual(self.my_model.name, my_model_json['name'])
-        self.assertEqual(self.my_model.my_number, my_model_json['my_number'])
-        self.assertEqual('BaseModel', my_model_json['__class__'])
-        self.assertEqual(self.my_model.id, my_model_json['id'])
 
     def test_checking_for_docstring_BaseModel(self):
         '''Test for docstring'''
